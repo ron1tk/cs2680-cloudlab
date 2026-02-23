@@ -18,7 +18,7 @@ node = request.RawPC("n0")
 node.hardware_type = params.NODETYPE
 node.disk_image = params.IMAGE
 
-node.addService(rspec.Execute(shell="bash", command=f"""
+node.addService(rspec.Execute(shell="bash", command=f'''
 set -euxo pipefail
 
 sudo mkdir -p /local/logs
@@ -42,6 +42,6 @@ git pull || true
 chmod +x startup.sh || true
 # run startup (keep it idempotent)
 sudo -E bash ./startup.sh
-"""))
+'''))
 
 pc.printRequestRSpec(request)
